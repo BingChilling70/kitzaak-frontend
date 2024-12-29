@@ -1,0 +1,85 @@
+/* Center the root and add padding */
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Navigation Styles */
+nav ul {
+  list-style: none; /* Remove bullet points */
+  display: flex; /* Arrange links horizontally */
+  justify-content: center; /* Center the navigation bar */
+  gap: 1.5rem; /* Space between links */
+  padding: 0;
+  margin: 1rem 0;
+}
+
+nav ul li {
+  display: inline; /* Keep list items inline */
+}
+
+nav ul li a {
+  text-decoration: none; /* Remove underline */
+  color: #007bff; /* Blue color for links */
+  padding: 10px 15px; /* Add padding for clickable area */
+  border-radius: 5px; /* Round corners */
+  transition: background-color 0.2s ease, color 0.2s ease; /* Smooth transitions */
+}
+
+nav ul li a:hover {
+  background-color: #e6f7ff; /* Light blue background on hover */
+  color: #0056b3; /* Darker blue text on hover */
+}
+
+/* Logout Button */
+.logout-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.logout-button:hover {
+  background-color: #ff1a1a;
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column; /* Stack navigation vertically on smaller screens */
+    gap: 1rem; /* Adjust spacing */
+  }
+
+  .logout-button {
+    width: 100%; /* Make the button full width */
+  }
+}
+
+/* Add some card styling */
+.card {
+  background-color: #f9f9f9; /* Light gray background */
+  border: 1px solid #ddd; /* Subtle border */
+  border-radius: 10px; /* Rounded corners */
+  padding: 2rem; /* Add padding */
+  margin: 1rem auto; /* Center card */
+  max-width: 600px; /* Limit card width */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a shadow */
+}
+
+.card h1 {
+  color: #333; /* Dark gray for headings */
+}
+
+/* Read the Docs Styling */
+.read-the-docs {
+  color: #888;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
