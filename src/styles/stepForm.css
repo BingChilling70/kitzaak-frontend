@@ -1,0 +1,102 @@
+.step-container {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.step-container h2 {
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #222;
+}
+
+.step-input,
+.step-textarea {
+    width: 100%;
+    padding: 12px 14px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.step-input:focus,
+.step-textarea:focus {
+    border-color: #007aff;
+    outline: none;
+    box-shadow: 0 0 4px rgba(0,122,255,0.4);
+}
+
+.step-textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.category-options {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.category-btn {
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 1rem;
+    background: #f9f9f9;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.category-btn:hover {
+    background: #f0f0f0;
+}
+
+.category-btn.selected {
+    background: #007aff;
+    color: #fff;
+    border-color: #007aff;
+}
+
+.step-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-primary {
+    background: #007aff;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background: #005fcc;
+}
+
+.btn-secondary {
+    background: #f0f0f0;
+    color: #333;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn-secondary:hover {
+    background: #e0e0e0;
+}
