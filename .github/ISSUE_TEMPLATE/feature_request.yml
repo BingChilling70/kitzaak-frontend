@@ -1,0 +1,25 @@
+name: Feature request
+description: Propose a new capability
+labels: [feature, P2]
+projects: ["BingChilling70/1"]
+body:
+  - type: input
+    id: outcome
+    attributes:
+      label: Outcome
+      placeholder: e.g., Customer can schedule a visit in 3 steps
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options: [Customer Portal, Worker Portal, Frontend, Backend, DevOps, Design]
+      multiple: false
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      placeholder: Bullet points…

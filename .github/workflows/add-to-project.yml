@@ -1,0 +1,70 @@
+name: Add items to Project
+on:
+  issues:
+    types: [opened, edited, reopened]
+  pull_request:
+    types: [ready_for_review, opened, reopened]
+
+jobs:
+  add_to_project:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+      repository-projects: read
+      contents: read
+      projects: write
+    steps:
+      - name: Add to project
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PROJECT_TOKEN }}
+          script: |
+            const { owner, repo } = context.repo;
+            const number = context.payload.issue
+              ? context.payload.issue.number
+              : context.payload.pull_request.number;
+
+            // UPDATED: your project is number 2
+            const PROJECT_NUMBER = 2;
+            const ORG_OR_USER = "BingChilling70";
+
+            const queryProject = `
+              query($org: String!, $number: Int!) {
+                user(login: $org) { 
+                  projectV2(number: $number) { id }
+                }
+              }
+            `;
+            const { user } = await github.graphql(queryProject, { org: ORG_OR_USER, number: PROJECT_NUMBER });
+            if (!user?.projectV2?.id) {
+              core.setFailed("Project not found. Check ORG_OR_USER and PROJECT_NUMBER.");
+            }
+            const projectId = user.projectV2.id;
+
+            const getItemId = `
+              query($owner:String!, $repo:String!, $number:Int!){
+                repository(owner:$owner, name:$repo) {
+                  issueOrPullRequest(number:$number){
+                    __typename
+                    ... on Issue { id }
+                    ... on PullRequest { id }
+                  }
+                }
+              }
+            `;
+            const res2 = await github.graphql(getItemId, { owner, repo, number });
+            const contentId = res2.repository.issueOrPullRequest?.id;
+            if (!contentId) {
+              core.setFailed("Unable to resolve Issue/PR node id.");
+            }
+
+            const addMutation = `
+              mutation($projectId:ID!, $contentId:ID!) {
+                addProjectV2ItemById(input:{projectId:$projectId, contentId:$contentId}) {
+                  item { id }
+                }
+              }
+            `;
+            await github.graphql(addMutation, { projectId, contentId });
+            core.info(\`Added #\${number} from \${owner}/\${repo} to project \${PROJECT_NUMBER}\`);

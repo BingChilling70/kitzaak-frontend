@@ -1,0 +1,25 @@
+name: Bug report
+description: Report a problem in Kitzaak
+labels: [bug, P2]
+projects: ["BingChilling70/1"]  # owner/project-number (new Projects)
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe expected vs actual
+      placeholder: Clear steps to reproduce
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options: [Frontend, Backend, Worker Portal, Customer Portal, DevOps]
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options: [P0, P1, P2, P3]
